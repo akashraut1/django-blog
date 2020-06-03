@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              
+              <small class="text-muted">{{ post.dated_posted|date:"F d, Y" }}</small>
+              <img src="https://i.pinimg.com/474x/ec/34/a3/ec34a3863425ab64ad84dbddd97aca84--spa-logo-logo-design-inspiration.jpg" width="50" height="50">
+            </div>
+            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+          </div>
+        </article>
+    
+    {% endfor %}
+{% endblock content %}
