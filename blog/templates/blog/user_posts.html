@@ -1,5 +1,6 @@
 {% extends "blog/base.html" %}
 {% block content %}
+<h1 class="mb-3">Posts by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1>
     {% for post in posts %}
         <article class="media content-section">
           <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
@@ -11,20 +12,8 @@
             </div>
             <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
             <p class="article-content">{{ post.content }}</p>
-            {% if post.photo %}
-                <p><img class="post" src="{{ post.photo.url }}" width="200" height="200"></p>
-            {% else %}
-                <p></p>
-            {%endif%}
+            <img class="post" src="{{ post.photo.url }}" width="200" height="200">
           </div>
-          <form action="{% url 'like_post' %}" method="POST">
-            {% csrf_token %}
-            {% if is_liked %}
-            <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger">Dislike</button>
-           {% else %}
-           <button type="submit" name="post_ d" value="{{ post.id }}" class="btn btn-primary">like</button>
-           {% endif %}
-            </form>
         </article>
     
     {% endfor %}

@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='post',
             name='name',
-            field=models.TextField(default=['usagfuyue', 'hagsfyugsufh', 'hsghfudfu']),
+            field=models.TextField(default=1),
             preserve_default=False,
         ),
     ]
